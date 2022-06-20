@@ -1,0 +1,33 @@
+class Solution
+{
+    public:
+    struct node * fun(struct node *head, int k)
+    {
+        
+        if(head==NULL)return NULL;
+         struct node *prev=NULL,*curr=head,*next;
+         int c=0;
+         //cheak  for value of c and and also cheak if curr is not null;
+         
+         while(curr!=NULL&&c<k)
+         {
+             next=curr->next;
+             curr->next=prev;
+             prev=curr;
+             curr=next;
+             c++;
+         }
+         
+         head->next=fun(curr,k);
+         return prev;
+         
+    }
+    struct node *reverse (struct node *head, int k)
+    { 
+       return fun(head,k);
+    }
+};
+
+
+
+https://practice.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1
